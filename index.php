@@ -1,6 +1,11 @@
 <?php
 
-$hello = "Hello, world!";
+$hello		= "Hello, world!";
+
+ob_start();
+$revision	= chop( file_get_contents( "REVISION" ) ); 
+ob_end_clean();
+
 
 ?>
 <html>
@@ -9,5 +14,6 @@ $hello = "Hello, world!";
   </head>
   <body>
     <h1><?=$hello?></title>
+    <p>REVISION: <?=$revision?></p>
   </body>
 </html>
