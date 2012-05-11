@@ -13,7 +13,7 @@ ob_end_clean();
     <title><?=$hello?></title>
   </head>
   <body>
-    <h1><?=$hello?></title>
+    <h1><?=$hello?></h1>
     <p>REVISION: <?=$revision?></p>
   </body>
 </html>
