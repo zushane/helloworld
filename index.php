@@ -16,7 +16,8 @@ $tag		= "selleck"
   <body>
     <h1><?=$hello?></h1>
     <pre>
-REVISION: <?=$revision?>
+REVISION: <?=$revision?>\n
 TAG:      <?=$tag?>     
+    </pre>
   </body>
 </html>
