@@ -6,6 +6,7 @@ ob_start();
 $revision	= chop( file_get_contents( "REVISION" ) ); 
 ob_end_clean();
 
+$tag		= "selleck"
 
 ?>
 <html>
@@ -14,6 +15,8 @@ ob_end_clean();
   </head>
   <body>
     <h1><?=$hello?></h1>
-    <p>REVISION: <?=$revision?></p>
+    <pre>
+REVISION: <?=$revision?>
+TAG:      <?=$tag?>     
   </body>
 </html>
