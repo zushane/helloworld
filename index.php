@@ -4,9 +4,9 @@ $hello		= "Hello, world!";
 
 ob_start();
 $revision	= chop( file_get_contents( "REVISION" ) ); 
+$tag		= chop( file_get_contents( "TAG" ) );
 ob_end_clean();
 
-$tag		= "selleck"
 
 ?>
 <html>
