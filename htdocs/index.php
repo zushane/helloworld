@@ -16,7 +16,7 @@ ob_end_clean();
   <body>
     <h1><?=$hello?></h1>
     <pre>
-REVISION: <?=$revision?>\n
+REVISION: <?=$revision?>
 TAG:      <?=$tag?>     
     </pre>
   </body>
