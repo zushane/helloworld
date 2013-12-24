@@ -3,3 +3,4 @@
 config
 Capfile
 REVISION
+capistrano
