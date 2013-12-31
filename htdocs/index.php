@@ -5,6 +5,7 @@ $hello		= "Hello, world!";
 ob_start();
 $revision	= chop( file_get_contents( "REVISION" ) ); 
 $tag		= chop( file_get_contents( "TAG" ) );
+$server		= $_SERVER['SERVER_NAME'];
 ob_end_clean();
 
 
@@ -18,6 +19,7 @@ ob_end_clean();
     <pre>
 REVISION: <?=$revision?>
 TAG:      <?=$tag?>     
+SERVER:   <?=$server?>
     </pre>
   </body>
 </html>

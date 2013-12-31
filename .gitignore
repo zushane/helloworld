@@ -4,3 +4,4 @@ config
 Capfile
 REVISION
 capistrano
+*.sublime-*
