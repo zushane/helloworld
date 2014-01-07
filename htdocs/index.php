@@ -3,9 +3,9 @@
 $hello		= "Hello, world!";
 
 ob_start();
-$revision	= chop( file_get_contents( "REVISION" ) ); 
-$tag		= chop( file_get_contents( "TAG" ) );
-$server		= $_SERVER['SERVER_NAME'];
+$revision	= chop( file_get_contents( "REVISION" ) ) . "\n"; 
+$tag		= chop( file_get_contents( "TAG" ) ) . "\n";
+$server		= $_SERVER['SERVER_NAME'] . "\n";
 ob_end_clean();
 
 
