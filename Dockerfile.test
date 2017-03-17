@@ -1,0 +1,10 @@
+FROM centos:latest
+
+RUN yum update && yum install -y curl && yum clean packages
+
+WORKDIR /app
+
+ADD test.sh /app/test.sh
+
+CMD ["bash", "test.sh"]
+
