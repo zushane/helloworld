@@ -20,7 +20,7 @@ my $byeCall = HelloWorld::bye();
 like($byeCall, qr/Hello, .*world/, "bye() RE test");
 
 # Test goodbye_message() routine using a got/expected routine. (?)
-is($byeCall, "Hello, world!", "bye IS test")
+is($byeCall, "Hello, world!", "bye IS test");
 
 
 # Test repeat() routine using a got/expected routine
