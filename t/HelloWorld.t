@@ -15,12 +15,12 @@ like($helloCall, qr/Hello, .*world/, "hello() RE test");
 # Test hello_message() routine using a got/expected routine
 is($helloCall, "Hello, world!", "hello() IS test");
 
-# Test bye() routine using a regular expression
-my $byeCall = HelloWorld::bye();
-like($byeCall, qr/Hello, .*world/, "bye() RE test");
+# # Test bye() routine using a regular expression
+# my $byeCall = HelloWorld::bye();
+# like($byeCall, qr/Hello, .*world/, "bye() RE test");
 
-# Test goodbye_message() routine using a got/expected routine. (?)
-is($buyCall, "Hello, world!", "bye IS test")
+# # Test goodbye_message() routine using a got/expected routine. (?)
+# is($buyCall, "Hello, world!", "bye IS test")
 
 
 # Test repeat() routine using a got/expected routine
