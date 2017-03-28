@@ -21,6 +21,11 @@ pipeline {
 				sh './Build test'
 			}
 		}
+		stage( 'Deploy' ) {
+			steps {
+				echo "Nothing to deploy, really..."
+			}
+		}
 	}
 	post {
 		success {
