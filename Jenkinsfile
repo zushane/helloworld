@@ -1,3 +1,5 @@
+#!groovy
+
 /***
  * Jenkinsfile for perl HelloWorld project. 
  */
