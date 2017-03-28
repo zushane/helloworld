@@ -4,29 +4,7 @@
  * Jenkinsfile for perl HelloWorld project. 
  */
 
-pipeline {
-    agent any
 
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
-}
-
-/*
 pipeline {
 	agent any
 
@@ -34,13 +12,13 @@ pipeline {
 		stage( 'Build' ) {
 			steps {
 				echo 'Building perl HelloWorld...'
-				sh /usr/bin/perl Build.PL
+				sh '/usr/bin/perl Build.PL'
 			}
 		}
 		stage( 'Test' ) {
 			steps {
 				echo 'Testing perl HelloWorld...'
-				sh ./Build test
+				sh './Build test'
 			}
 		}
 		post {
@@ -58,4 +36,3 @@ pipeline {
 
 	}
 }
-*/
