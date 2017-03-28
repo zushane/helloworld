@@ -21,9 +21,9 @@ pipeline {
 				sh './Build test'
 			}
 		}
-		stage( 'Deploy' ) {
+		stage( 'Pizza Party' ) {
 			steps {
-				echo "Nothing to deploy, really..."
+				echo "Ham & Pineapple, please..."
 			}
 		}
 	}
