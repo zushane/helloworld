@@ -19,9 +19,15 @@ is($helloCall, "Hello, world!", "hello() IS test");
 my $byeCall = HelloWorld::bye();
 like($byeCall, qr/Goodbye, .*world/, "bye() RE test");
 
-# Test goodbye_message() routine using a got/expected routine. (?)
-is($byeCall, "Goodbye, cruel world!", "bye IS test");
+# Test goodbye_message() routine using a got/expected routine.
+is($byeCall, "Goodbye, cruel world!", "bye() IS test");
 
+# Test what_message() routine using a regular expression
+my $whatCall = HelloWorld::what();
+like( $whatCall, qr/^What.*\?/, "what() RE test" );
+
+# Test what_message() routing using a got/expected routine.
+is($whatCall, "What even IS the world?", "what() IS test");
 
 # Test repeat() routine using a got/expected routine
 for (my $ctr=1; $ctr<=10; $ctr++) {
