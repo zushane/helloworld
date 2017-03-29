@@ -24,7 +24,7 @@ is($byeCall, "Goodbye, cruel world!", "bye() IS test");
 
 # Test what_message() routine using a regular expression
 my $whatCall = HelloWorld::what();
-like( $whatCall, qr/^Who.*\?/, "what() RE test" );
+like( $whatCall, qr/^What.*\?/, "what() RE test" );
 
 # Test what_message() routing using a got/expected routine.
 is($whatCall, "What even IS the world?", "what() IS test");
