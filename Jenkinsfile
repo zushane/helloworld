@@ -7,7 +7,7 @@
 
 //pipeline {
 //	agent any
-node( 'any' ) {
+node( 'master' ) {
 	stages {
 		stage( 'Build' ) {
 			steps {
