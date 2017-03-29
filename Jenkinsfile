@@ -1,13 +1,14 @@
 #!groovy
 
 /***
- * Jenkinsfile for perl HelloWorld project. 
+ * Jenkinsfile for perl HelloWorld project.
+ *   Declarative version. 
  */
 
 
-//pipeline {
-//	agent any
-node( 'master' ) {
+pipeline {
+	agent any
+
 	stages {
 		stage( 'Build' ) {
 			steps {
