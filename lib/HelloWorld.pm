@@ -12,6 +12,10 @@ sub bye {
    return "Goodbye, cruel world!";
 }
 
+sub what {
+    return "What even IS the world?";
+}
+
 sub repeat {
    return 1;
 }
