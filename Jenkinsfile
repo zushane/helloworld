@@ -5,9 +5,9 @@
  */
 
 
-pipeline {
-	agent any
-
+//pipeline {
+//	agent any
+node( 'any' ) {
 	stages {
 		stage( 'Build' ) {
 			steps {
@@ -34,7 +34,7 @@ pipeline {
 		}
 		failure {
 			echo 'FAILURE.'
-			mail to: 'sd@zu.com', subject: "😵 FAILURE: ${currentBuild.fullDisplayName}", body: "Hello World FAILED its tests.\n"
+			mail to: 'sd@zu.com', subject: "💣 FAILURE: ${currentBuild.fullDisplayName}", body: "Hello World FAILED its tests.\n"
 		}
 	}
 	
