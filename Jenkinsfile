@@ -19,6 +19,7 @@ pipeline {
 		}
 		stage( 'Test' ) {
 			steps {
+				slackSend "Testing Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
 				echo 'Testing perl HelloWorld...'
 				sh './Build test'
 			}
