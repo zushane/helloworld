@@ -13,7 +13,7 @@ sub bye {
 }
 
 sub what {
-    return "What even IS the world?";
+    return "What even IS this world?";
 }
 
 sub repeat {
