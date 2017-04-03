@@ -12,7 +12,7 @@ pipeline {
 	stages {
 		stage( 'Build' ) {
 			steps {
-				slackSend message: 'Message from Jenkins Pipeline!'
+				slackSend channel: '#test2', color: 'good', message: 'Slack Message', teamDomain: 'zucomm'//, token: 'token'
 				//slackSend channel: "#test", message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
 				echo 'Building perl HelloWorld...'
 				sh '/usr/bin/perl Build.PL'
