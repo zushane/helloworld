@@ -34,12 +34,12 @@ pipeline {
 		success {
 			echo 'SUCCESS.'
 			mail to: 'sd@zu.com', subject: "😀 SUCCESS: ${currentBuild.fullDisplayName}", body: "Hello World successfully passed its tests.\n"
-			slackSend channel: "#test", message: "😀 SUCCESS: ${currentBuild.fullDisplayName}" 
+			slackSend channel: "#test2", message: "😀 SUCCESS: ${currentBuild.fullDisplayName}" 
 		}
 		failure {
 			echo 'FAILURE.'
 			mail to: 'sd@zu.com', subject: "💣 FAILURE: ${currentBuild.fullDisplayName}", body: "Hello World FAILED its tests.\n"
-			slackSend channel: "#test", message: "💣 FAILURE: ${currentBuild.fullDisplayName}"
+			slackSend channel: "#test2", message: "💣 FAILURE: ${currentBuild.fullDisplayName}"
 		}
 	}
 	
