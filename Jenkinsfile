@@ -7,7 +7,7 @@
 
 
 pipeline {
-	agent any
+	agent { docker 'perl' }
 
 	stages {
 		stage( 'Build' ) {
