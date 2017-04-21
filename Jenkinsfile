@@ -11,7 +11,9 @@ pipeline {
 
 	stages {
 		stage( 'Docker' ) {
-			sh 'cat /etc/issue'
+			steps {
+				sh 'cat /etc/issue'
+			}
 		}
 		stage( 'Build' ) {
 			steps {
