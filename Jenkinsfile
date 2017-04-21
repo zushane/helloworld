@@ -8,15 +8,19 @@ pipeline {
 
 	stages {
 		stage( 'Build' ) {
-			slackSend channel: "#test", color: "#ACF0FD", message: "🛠 Build Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
-			echo 'Building Haskell Hello World...'
-			sh 'ghc  --make -O2 helloworld.hs -o helloworld'
+			steps {
+				slackSend channel: "#test", color: "#ACF0FD", message: "🛠 Build Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
+				echo 'Building Haskell Hello World...'
+				sh 'ghc  --make -O2 helloworld.hs -o helloworld'
+			}
 		}
 
 		stage( 'Test' ) {
-			slackSend channel: "#test", color: "#ACF0FD", message: "📝 Testing Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
-			echo 'Testing Haskell Hello World...'
-			sh './helloworld'
+			steps {
+				slackSend channel: "#test", color: "#ACF0FD", message: "📝 Testing Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
+				echo 'Testing Haskell Hello World...'
+				sh './helloworld'
+			}
 		}
 		stage( 'Pizza Party' ) {
 			steps {
