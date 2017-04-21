@@ -10,6 +10,9 @@ pipeline {
 	agent { docker 'perl' }
 
 	stages {
+		stage( 'Docker' ) {
+			sh 'cat /etc/issue'
+		}
 		stage( 'Build' ) {
 			steps {
 				slackSend channel: "#test", color: "#ACF0FD", message: "🛠 Build Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
