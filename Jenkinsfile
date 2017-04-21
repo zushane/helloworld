@@ -11,7 +11,7 @@ pipeline {
 			steps {
 				slackSend channel: "#test", color: "#ACF0FD", message: "🛠 Build Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
 				echo 'Building Haskell Hello World...'
-				sh 'ghc  --make -O2 helloworld.hs -o helloworld'
+				sh '/opt/ghc/8.0.2/bin/ghc  --make -O2 helloworld.hs -o helloworld'
 			}
 		}
 
