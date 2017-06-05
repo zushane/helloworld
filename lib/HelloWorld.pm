@@ -9,7 +9,7 @@ sub hello {
 }
 
 sub bye {
-   return "Goodbye, cruel world!";
+   return "Goodbye, then!";
 }
 
 sub what {
