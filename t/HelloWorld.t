@@ -17,10 +17,10 @@ is($helloCall, "Hello, world!", "hello() IS test");
 
 # Test bye() routine using a regular expression
 my $byeCall = HelloWorld::bye();
-like($byeCall, qr/Goodbye, .*world/, "bye() RE test");
+like($byeCall, qr/Goodbye, then/, "bye() RE test");
 
 # Test goodbye_message() routine using a got/expected routine.
-is($byeCall, "Goodbye, cruel world!", "bye() IS test");
+is($byeCall, "Goodbye, then!", "bye() IS test");
 
 # Test what_message() routine using a regular expression
 my $whatCall = HelloWorld::what();
