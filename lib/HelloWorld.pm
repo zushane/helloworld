@@ -17,7 +17,7 @@ sub what {
 }
 
 sub synonym {
-	@array = ( "earth", "globe", "planet", "all of creation" );
+	my @array = ( "earth", "globe", "planet", "all of creation" );
 	return $array[rand @array];
 }
 
