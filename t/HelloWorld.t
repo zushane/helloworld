@@ -26,7 +26,7 @@ is($byeCall, "Goodbye, then!", "bye() IS test");
 my $whatCall = HelloWorld::what();
 like( $whatCall, qr/^What.*\?/, "what() RE test" );
 
-# Test what_message() routing using a got/expected routine.
+# Test what_message() routine using a got/expected routine.
 is($whatCall, "What even IS this world?", "what() IS test");
 
 # Test repeat() routine using a got/expected routine
