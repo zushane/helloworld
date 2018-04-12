@@ -5,7 +5,7 @@ package HelloWorld;
 $HelloWorld::VERSION = '0.1';
 
 sub hello {
-   return "Hello, world!";
+   return "Henlo, world!";
 }
 
 sub bye {
