@@ -8,7 +8,9 @@ pipeline {
 
 	triggers {
 		//H H(0-6) * * *
-		cron('29 11 * * * ')
+		parameterizedCron('''
+			* 11 * * * %TRIGGERED=TRUE
+		''')
 	}
 	stages {
 		stage( 'Build' ) {
