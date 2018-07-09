@@ -11,29 +11,22 @@ pipeline {
 		cron('23 16 * * *')
 	}
 
+	environment {
+		TRIGGERED="nope"
+	}
+
 	stages {
 		stage( 'Detect Build Cause' ) {
 			steps {
 				echo "Trying to detect the cause of this build."
 				script {
-					// def causes = currentBuild.rawBuild.getCauses()
-					// for ( cause in causes ) {
-					// 	echo "Cause: ${cause}"
-					// }
 					def specificCause = currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) != null
-					echo "Specific Cause: ${specificCause}"
+					if ( specificCause == true )  {
+						TRIGGERED="YUP"
+					}
                 }
-				// script {
-				// 	def causes = currentBuild.rawBuild.getCauses()
-				// 	for(cause in causes) {
-				// 		if (cause.class.toString().contains("UpstreamCause")) {
-				// 			TRIGGERED="no"
-				// 		} else {
-				// 			TRIGGERED="yes"
-				// 		}
-				// 	}
-				// }
 			}
+			echo "Triggered? -${TRIGGERED}"
 		}
 		stage( 'Build' ) {
 			steps {
