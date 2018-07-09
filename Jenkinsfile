@@ -10,6 +10,18 @@ pipeline {
 		//H H(0-6) * * *
 		cron('39 14 * * *')
 	}
+	environment {
+		script {
+			def causes = currentBuild.rawBuild.getCauses()
+			for(cause in causes) {
+				if (cause.class.toString().contains("UpstreamCause")) {
+					TRIGGERED="no"
+				} else {
+					TRIGGERED="yes"
+				}
+			}
+		}
+	}
 	stages {
 		stage( 'Build' ) {
 			steps {
