@@ -13,7 +13,7 @@ pipeline {
 	triggers {
 		//H H(0-6) * * *
 		parameterizedCron('''
-			* 11 * * * %TRIGGERED=TRUE
+* 11 * * * %TRIGGERED=TRUE
 		''')
 	}
 	stages {
