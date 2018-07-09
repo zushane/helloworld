@@ -13,16 +13,19 @@ pipeline {
 
 	stages {
 		stage( 'Detect Build Cause' ) {
-			script {
-				def causes = currentBuild.rawBuild.getCauses()
-				for(cause in causes) {
-					if (cause.class.toString().contains("UpstreamCause")) {
-						TRIGGERED="no"
-					} else {
-						TRIGGERED="yes"
-					}
-				}
-		}
+			steps {
+				echo "Trying to detect the cause of this build."
+				// script {
+				// 	def causes = currentBuild.rawBuild.getCauses()
+				// 	for(cause in causes) {
+				// 		if (cause.class.toString().contains("UpstreamCause")) {
+				// 			TRIGGERED="no"
+				// 		} else {
+				// 			TRIGGERED="yes"
+				// 		}
+				// 	}
+				// }
+			}
 		}
 		stage( 'Build' ) {
 			steps {
