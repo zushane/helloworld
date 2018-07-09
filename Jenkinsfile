@@ -6,6 +6,10 @@ pipeline {
 		docker 'haskell'
 	}
 
+	environment {
+		TRIGGERED="FALSE"
+	}
+
 	triggers {
 		//H H(0-6) * * *
 		parameterizedCron('''
@@ -28,9 +32,9 @@ pipeline {
 				sh './helloworld'
 			}
 		}
-		stage( 'Pizza Party' ) {
+		stage( 'Triggered' ) {
 			steps {
-				echo "Ham & Pineapple, please!"
+				echo "Am I triggered? -${TRIGGERED}-"
 			}
 		}
 	}
