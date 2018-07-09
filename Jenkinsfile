@@ -6,12 +6,9 @@ pipeline {
 		docker 'haskell'
 	}
 
-	environment {
-		TRIGGERED="FALSE"
-	}
-
 	triggers {
-  		parameterizedCron '* 13 * * * %TRIGGERED=true'	
+		//H H(0-6) * * *
+		cron('39 14 * * *')
 	}
 	stages {
 		stage( 'Build' ) {
@@ -29,9 +26,9 @@ pipeline {
 				sh './helloworld'
 			}
 		}
-		stage( 'Triggered' ) {
+		stage( 'Pizza Party' ) {
 			steps {
-				echo "Am I triggered? -${TRIGGERED}-"
+				echo "Ham & Pineapple, please!"
 			}
 		}
 	}
