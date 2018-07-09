@@ -11,9 +11,7 @@ pipeline {
 	}
 
 	triggers {
-  		parameterizedCron {
-			parameterizedSpecification("""* 13 * * * % TRIGGERED=true""".stripIndent())
-		}
+  		parameterizedCrodfdfn '* 13 * * * %TRIGGERED=true'	
 	}
 	stages {
 		stage( 'Build' ) {
