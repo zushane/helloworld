@@ -11,7 +11,7 @@ pipeline {
 	}
 
 	triggers {
-		parameterizedCron("* 13 * * *")
+		parameterizedCron('* 13 * * *')
 	}
 	stages {
 		stage( 'Build' ) {
