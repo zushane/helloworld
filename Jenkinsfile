@@ -12,7 +12,7 @@ pipeline {
 	}
 
 	environment {
-		TRIGGERED="nope"
+		TRIGGERED="false"
 	}
 
 	stages {
@@ -22,10 +22,10 @@ pipeline {
 				script {
 					def specificCause = currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) != null
 					if ( specificCause == true )  {
-						TRIGGERED="YUP"
+						TRIGGERED="true"
 					}
                 }
-				echo "Triggered? -${TRIGGERED}"
+				echo "Triggered? ${TRIGGERED}"
 			}
 		}
 		stage( 'Build' ) {
