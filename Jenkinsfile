@@ -6,6 +6,10 @@ pipeline {
 		docker 'haskell'
 	}
 
+	triggers {
+		//H H(0-6) * * *
+		cron('16 11 * * * ')
+	}
 	stages {
 		stage( 'Build' ) {
 			steps {
