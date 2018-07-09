@@ -10,19 +10,20 @@ pipeline {
 		//H H(0-6) * * *
 		cron('39 14 * * *')
 	}
-	environment {
-		script {
-			def causes = currentBuild.rawBuild.getCauses()
-			for(cause in causes) {
-				if (cause.class.toString().contains("UpstreamCause")) {
-					TRIGGERED="no"
-				} else {
-					TRIGGERED="yes"
-				}
-			}
-		}
-	}
+
 	stages {
+		stage( 'Detect Build Cause' ) {
+			script {
+				def causes = currentBuild.rawBuild.getCauses()
+				for(cause in causes) {
+					if (cause.class.toString().contains("UpstreamCause")) {
+						TRIGGERED="no"
+					} else {
+						TRIGGERED="yes"
+					}
+				}
+		}
+		}
 		stage( 'Build' ) {
 			steps {
 				slackSend channel: "#test", color: "#ACF0FD", message: "🛠 Build Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
