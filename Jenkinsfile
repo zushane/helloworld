@@ -16,6 +16,7 @@ pipeline {
 			steps {
 				echo "Trying to detect the cause of this build."
 				script {
+					def causes = currentBuild.rawBuild.getCauses()
                     def browsers = ['chrome', 'firefox']
                     for (int i = 0; i < browsers.size(); ++i) {
                         echo "Testing the ${browsers[i]} browser"
