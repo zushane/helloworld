@@ -11,7 +11,7 @@ pipeline {
 	}
 
 	triggers {
-		parameterizedCron('* 13 * * * % TEST=yes')
+  		parameterizedCron '* 13 * * * %TRIGGERED=true'	
 	}
 	stages {
 		stage( 'Build' ) {
