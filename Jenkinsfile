@@ -17,7 +17,9 @@ pipeline {
 				echo "Trying to detect the cause of this build."
 				script {
 					def causes = currentBuild.rawBuild.getCauses()
-					echo causes
+					for ( cause in causes ) {
+						echo "Cause: ${cause}"
+					}
                 }
 				// script {
 				// 	def causes = currentBuild.rawBuild.getCauses()
