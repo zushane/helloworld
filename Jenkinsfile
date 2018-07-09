@@ -8,7 +8,7 @@ pipeline {
 
 	triggers {
 		//H H(0-6) * * *
-		cron('28 16 * * *')
+		cron('29 16 * * *')
 	}
 
 	environment {
@@ -25,8 +25,8 @@ pipeline {
 						TRIGGERED="YUP"
 					}
                 }
+				echo "Triggered? -${TRIGGERED}"
 			}
-			echo "Triggered? -${TRIGGERED}"
 		}
 		stage( 'Build' ) {
 			steps {
