@@ -8,7 +8,7 @@ pipeline {
 
 	triggers {
 		//H H(0-6) * * *
-		cron('16 11 * * * ')
+		cron('* 11 * * * ')
 	}
 	stages {
 		stage( 'Build' ) {
