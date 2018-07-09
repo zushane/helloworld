@@ -16,11 +16,11 @@ pipeline {
 			steps {
 				echo "Trying to detect the cause of this build."
 				script {
-					def causes = currentBuild.rawBuild.getCauses()
-					def specificCause = currentBuild.rawBuild.getCause(hudson.model.Cause$UserCause)
-					for ( cause in causes ) {
-						echo "Cause: ${cause}"
-					}
+					// def causes = currentBuild.rawBuild.getCauses()
+					// for ( cause in causes ) {
+					// 	echo "Cause: ${cause}"
+					// }
+					def specificCause = currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) != null
 					echo "Specific Cause: ${specificCause}"
                 }
 				// script {
