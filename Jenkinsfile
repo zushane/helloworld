@@ -44,7 +44,7 @@ pipeline {
 		stage( 'Pizza Party' ) {
 			// We should only have a Pizza Party when we've pushed something up, not when we're triggered by a cron timer.
 			when {
-				equals expected: "false" actual: TIMER_TRIGGERED
+				equals expected: "false", actual: TIMER_TRIGGERED
 			}
 			steps {
 				echo "Ham & Pineapple, please!"
