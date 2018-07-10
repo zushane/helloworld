@@ -8,24 +8,22 @@ pipeline {
 
 	triggers {
 		//H H(0-6) * * *
-		cron('29 16 * * *')
+		cron('05 11 * * *')
 	}
 
 	environment {
-		TRIGGERED="false"
+		TIMER_TRIGGERED="false"
 	}
 
 	stages {
 		stage( 'Detect Build Cause' ) {
 			steps {
-				echo "Trying to detect the cause of this build."
 				script {
 					def specificCause = currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) != null
 					if ( specificCause == true )  {
-						TRIGGERED="true"
+						TIMER_TRIGGERED="true"
 					}
                 }
-				echo "Triggered? ${TRIGGERED}"
 			}
 		}
 		stage( 'Build' ) {
@@ -44,6 +42,10 @@ pipeline {
 			}
 		}
 		stage( 'Pizza Party' ) {
+			// We should only have a Pizza Party when we've pushed something up, not when we're triggered by a cron timer.
+			when {
+				equals expected: "false" actual: TIMER_TRIGGERED
+			}
 			steps {
 				echo "Ham & Pineapple, please!"
 			}
