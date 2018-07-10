@@ -17,18 +17,15 @@ pipeline {
 
 	stages {
 		stage( 'Detect Build Cause' ) {
-			when {
-				not (currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) != null)
-			}
 			steps {
-				// echo "Trying to detect the cause of this build."
-				// script {
-				// 	def specificCause = currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) != null
-				// 	if ( specificCause == true )  {
-				// 		TRIGGERED="true"
-				// 	}
-                // }
-				echo "Triggered by timer."
+				echo "Trying to detect the cause of this build."
+				script {
+					def specificCause = currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) != null
+					if ( specificCause == true )  {
+						TRIGGERED="true"
+					}
+                }
+				echo "Triggered? ${TRIGGERED}"
 			}
 		}
 		stage( 'Build' ) {
