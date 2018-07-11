@@ -55,7 +55,7 @@ pipeline {
 		success {
 			echo 'SUCCESS.'
 			mail to: 'sd@zu.com', subject: "😀 SUCCESS: ${currentBuild.fullDisplayName}", body: "Haskell Hello World successfully passed its tests.\n"
-			slackSend channel: "#test", color: "good", message: "😀 SUCCESS after ${currentBuild.duration}: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>" 
+			slackSend channel: "#test", color: "good", message: "😀 SUCCESS after ${currentBuild.durationString}: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>" 
 		}
 		failure {
 			echo 'FAILURE.'
