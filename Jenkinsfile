@@ -52,7 +52,6 @@ pipeline {
 		}
 	}
 	post {
-		duration = currentBuild.
 		success {
 			echo 'SUCCESS.'
 			mail to: 'sd@zu.com', subject: "😀 SUCCESS: ${currentBuild.fullDisplayName}", body: "Haskell Hello World successfully passed its tests.\n"
