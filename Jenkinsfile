@@ -6,9 +6,13 @@ pipeline {
 		docker 'haskell'
 	}
 
+	// triggers {
+	// 	//H H(0-6) * * *
+	// 	cron('17 11 * * *')
+	// }
+
 	triggers {
-		//H H(0-6) * * *
-		cron('17 11 * * *')
+	  cron(env.BRANCH_NAME == 'haskell' ? '10 15 * * *' : '')
 	}
 
 	environment {
