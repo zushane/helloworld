@@ -7,7 +7,7 @@ pipeline {
 	}
 
 	triggers {
-	  cron(env.BRANCH_NAME == 'haskell' ? '10 30 * * *' : '')
+	  cron(env.BRANCH_NAME == 'haskell' ? '30 10 * * *' : '')
 	}
 
 	environment {
