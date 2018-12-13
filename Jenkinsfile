@@ -44,6 +44,24 @@ pipeline {
 				sh './helloworld'
 			}
 		}
+
+		stage( 'Delays' ) {
+			parallel {
+				stage( 'Randomness' ) {
+					steps {
+						echo 'Generating random numbers until we hit 22...'
+						sh './generateRandomNumbers.sh'
+					}
+				}
+				stage( 'Sleepiness' ) {
+					steps {
+						echo 'Just go to sleep for 30 seconds...'
+						sh 'sleep 30'
+					}
+				}
+			}
+
+		}
 		stage( 'Pizza Party' ) {
 			// We should only have a Pizza Party when we've pushed something up, not when we're triggered by a cron timer.
 			when {
