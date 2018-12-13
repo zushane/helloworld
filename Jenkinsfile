@@ -59,6 +59,11 @@ pipeline {
 						sh 'sleep 30'
 					}
 				}
+				stage( 'Read /etc/lsb-release' ) {
+					steps {
+						sh 'cat /etc/lsb-release'
+					}
+				}
 			}
 
 		}
