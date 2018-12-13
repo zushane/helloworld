@@ -6,6 +6,10 @@ pipeline {
 		docker 'haskell'
 	}
 
+	options {
+		disableConcurrentBuilds()
+	}
+
 	triggers {
 	  cron(env.BRANCH_NAME == 'haskell' ? '16 11 * * *' : '')
 	}
