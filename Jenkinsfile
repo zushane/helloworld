@@ -6,10 +6,6 @@ pipeline {
 		docker 'haskell'
 	}
 
-	options {
-		disableConcurrentBuilds()
-	}
-
 	triggers {
 	  cron(env.BRANCH_NAME == 'haskell' ? '16 11 * * *' : '')
 	}
@@ -27,6 +23,11 @@ pipeline {
 						TIMER_TRIGGERED="true"
 					}
                 }
+			}
+		}
+		stage( 'Check for concurrent builds.' ) {
+			steps {
+				echo "hold this space, please."
 			}
 		}
 		stage( 'Build' ) {
@@ -61,7 +62,7 @@ pipeline {
 				}
 				stage( 'Read /etc/lsb-release' ) {
 					steps {
-						sh 'cat /etc/lsb-release'
+						sh 'cat /etc/os-release'
 					}
 				}
 			}
