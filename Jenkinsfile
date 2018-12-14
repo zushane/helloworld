@@ -27,7 +27,7 @@ pipeline {
 		}
 		stage( 'Check for concurrent builds.' ) {
 			steps {
-				sh "date +%Y%m%d-%H%M%S > gsk-hmtms-web.lock"
+				sh "date +%Y%m%d-%H%M%S > ../../../../gsk-hmtms-web.lock"
 			}
 		}
 		stage( 'Build' ) {
