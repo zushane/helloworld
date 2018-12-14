@@ -27,7 +27,7 @@ pipeline {
 		}
 		stage( 'Check for concurrent builds.' ) {
 			steps {
-				echo "hold this space, please."
+				sh "date +%Y%m%d-%H%M%S > /tmp/gsk-hmtms-web.lock"
 			}
 		}
 		stage( 'Build' ) {
