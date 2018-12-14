@@ -60,7 +60,7 @@ pipeline {
 						sh 'sleep 30'
 					}
 				}
-				stage( 'Read /etc/lsb-release' ) {
+				stage( 'Read /etc/os-release' ) {
 					steps {
 						sh 'cat /etc/os-release'
 					}
