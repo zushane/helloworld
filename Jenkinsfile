@@ -25,11 +25,6 @@ pipeline {
                 }
 			}
 		}
-		stage( 'Check for concurrent builds.' ) {
-			steps {
-				sh "date +%Y%m%d-%H%M%S > ../../../../gsk-hmtms-web.lock"
-			}
-		}
 		stage( 'Build' ) {
 			steps {
 				slackSend channel: "#test", color: "#ACF0FD", message: "🛠 Build Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
