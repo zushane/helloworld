@@ -27,11 +27,9 @@ pipeline {
 		}
 		stage( 'Build' ) {
 			steps {
-				lock ('haskell-docker-container') {
-					slackSend channel: "#test", color: "#ACF0FD", message: "🛠 Build Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
-					echo 'Building Haskell Hello World...'
-					sh '/opt/ghc/bin/ghc  --make -O2 helloworld.hs -o helloworld'
-				}
+				slackSend channel: "#test", color: "#ACF0FD", message: "🛠 Build Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
+				echo 'Building Haskell Hello World...'
+				sh '/opt/ghc/bin/ghc  --make -O2 helloworld.hs -o helloworld'
 			}
 		}
 
