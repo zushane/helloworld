@@ -5,3 +5,8 @@ Capfile
 REVISION
 capistrano
 *.sublime-*
+Build
+MYMETA.json
+MYMETA.yml
+_build/
+haskell/

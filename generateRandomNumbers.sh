@@ -2,7 +2,7 @@
 
 result=0
 counter=0
-until [ $result -eq 22 ] ; do
+until [ $result -eq 42 ] ; do
 	let counter+=1
 	result=$RANDOM
 done
