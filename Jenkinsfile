@@ -21,6 +21,7 @@ pipeline {
 	stages {
 		stage( 'Environment Check' ) {
 			steps {
+				echo "Haskell Prime."
 				sh 'env'
 			}
 		}
