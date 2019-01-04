@@ -21,7 +21,6 @@ pipeline {
 	stages {
 		stage( 'Environment Check' ) {
 			steps {
-				echo "Environment Check, please."
 				sh 'env'
 			}
 		}
