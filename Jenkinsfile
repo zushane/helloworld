@@ -19,35 +19,37 @@ pipeline {
 	}
 
 	stages {
-		stage( 'Environment Check' ) {
-			steps {
-				echo "Haskell Prime."
-				sh 'env'
+		lock( 'haskell-docker-container' ) {
+			stage( 'Environment Check' ) {
+				steps {
+					echo "Haskell Prime."
+					sh 'env'
+				}
 			}
-		}
-		stage( 'Detect Build Cause' ) {
-			steps {
-				script {
-					def specificCause = currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) != null
-					if ( specificCause == true )  {
-						TIMER_TRIGGERED="true"
-					}
-                }
+			stage( 'Detect Build Cause' ) {
+				steps {
+					script {
+						def specificCause = currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) != null
+						if ( specificCause == true )  {
+							TIMER_TRIGGERED="true"
+						}
+   	             }
+				}
 			}
-		}
-		stage( 'Build' ) {
-			steps {
-				slackSend channel: "#test", color: "#ACF0FD", message: "🛠 Build Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
-				echo 'Building Haskell Hello World...'
-				sh '/opt/ghc/bin/ghc  --make -O2 helloworld.hs -o helloworld'
+			stage( 'Build' ) {
+				steps {
+					slackSend channel: "#test", color: "#ACF0FD", message: "🛠 Build Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
+					echo 'Building Haskell Hello World...'
+					sh '/opt/ghc/bin/ghc  --make -O2 helloworld.hs -o helloworld'
+				}
 			}
-		}
-
-		stage( 'Test' ) {
-			steps {
-				slackSend channel: "#test", color: "#ACF0FD", message: "📝 Testing Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
-				echo 'Testing Haskell Hello World...'
-				sh './helloworld'
+	
+			stage( 'Test' ) {
+				steps {
+					slackSend channel: "#test", color: "#ACF0FD", message: "📝 Testing Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
+					echo 'Testing Haskell Hello World...'
+					sh './helloworld'
+				}
 			}
 		}
 
