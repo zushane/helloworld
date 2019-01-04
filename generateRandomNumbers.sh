@@ -6,4 +6,4 @@ until [ $result -eq 42 ] ; do
 	let counter+=1
 	result=$RANDOM
 done
-echo "Here's the number $result. It should be 22. It took us $counter attempts to get it."
+echo "Here's the number $result. It should be 42. It took us $counter attempts to get it."
