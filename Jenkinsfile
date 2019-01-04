@@ -15,6 +15,11 @@ pipeline {
 	}
 
 	stages {
+		stage( 'Environment Check' ) {
+			steps {
+				sh 'env'
+			}
+		}
 		stage( 'Detect Build Cause' ) {
 			steps {
 				script {
