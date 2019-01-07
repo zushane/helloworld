@@ -15,7 +15,7 @@ pipeline {
 	}
 
 	stages {
-		stage( 'Parent' ) {
+		stage( 'Check lockable resources, and run if available.' ) {
 			stages {
 				options {
 					lock( 'haskell-docker-container' ) {
