@@ -6,10 +6,6 @@ pipeline {
 		docker 'haskell'
 	}
 
-	options { 
-		disableConcurrentBuilds() 
-	}
-
 	triggers {
 	  cron(env.BRANCH_NAME == 'haskell' ? '16 11 * * *' : '')
 	}
@@ -19,61 +15,65 @@ pipeline {
 	}
 
 	stages {
-		lock( 'haskell-docker-container' ) {
-			stage( 'Environment Check' ) {
-				steps {
-					echo "Haskell Prime."
-					sh 'env'
+		stage( 'Parent' ) {
+			stages {
+				// options {
+				// 	lock( 'haskell-docker-container' ) {
+				// }
+				stage( 'Environment Check' ) {
+					steps {
+						echo "Haskell Prime."
+						sh 'env'
+					}
 				}
-			}
-			stage( 'Detect Build Cause' ) {
-				steps {
-					script {
-						def specificCause = currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) != null
-						if ( specificCause == true )  {
-							TIMER_TRIGGERED="true"
+				stage( 'Detect Build Cause' ) {
+					steps {
+						script {
+							def specificCause = currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) != null
+							if ( specificCause == true )  {
+								TIMER_TRIGGERED="true"
+							}
+					}
+					}
+				}
+				stage( 'Build' ) {
+					steps {
+						slackSend channel: "#test", color: "#ACF0FD", message: "🛠 Build Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
+						echo 'Building Haskell Hello World...'
+						sh '/opt/ghc/bin/ghc  --make -O2 helloworld.hs -o helloworld'
+					}
+				}
+		
+				stage( 'Test' ) {
+					steps {
+						slackSend channel: "#test", color: "#ACF0FD", message: "📝 Testing Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
+						echo 'Testing Haskell Hello World...'
+						sh './helloworld'
+					}
+				}
+
+				stage( 'Delays' ) {
+					parallel {
+						stage( 'Randomness' ) {
+							steps {
+								echo 'Generating random numbers until we hit 22...'
+								sh './generateRandomNumbers.sh'
+							}
 						}
-   	             }
-				}
-			}
-			stage( 'Build' ) {
-				steps {
-					slackSend channel: "#test", color: "#ACF0FD", message: "🛠 Build Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
-					echo 'Building Haskell Hello World...'
-					sh '/opt/ghc/bin/ghc  --make -O2 helloworld.hs -o helloworld'
-				}
-			}
-	
-			stage( 'Test' ) {
-				steps {
-					slackSend channel: "#test", color: "#ACF0FD", message: "📝 Testing Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
-					echo 'Testing Haskell Hello World...'
-					sh './helloworld'
-				}
-			}
-		}
-
-		stage( 'Delays' ) {
-			parallel {
-				stage( 'Randomness' ) {
-					steps {
-						echo 'Generating random numbers until we hit 22...'
-						sh './generateRandomNumbers.sh'
-					}
-				}
-				stage( 'Sleepiness' ) {
-					steps {
-						echo 'Just go to sleep for 30 seconds...'
-						sh 'sleep 30'
-					}
-				}
-				stage( 'Read /etc/os-release' ) {
-					steps {
-						sh 'cat /etc/os-release'
+						stage( 'Sleepiness' ) {
+							steps {
+								echo 'Just go to sleep for 30 seconds...'
+								sh 'sleep 30'
+							}
+						}
+						stage( 'Read /etc/os-release' ) {
+							steps {
+								sh 'cat /etc/os-release'
+							}
+						}
 					}
 				}
 			}
-
 		}
 		stage( 'Pizza Party' ) {
 			// We should only have a Pizza Party when we've pushed something up, not when we're triggered by a cron timer.
