@@ -22,7 +22,7 @@ pipeline {
 			stages {
 				stage( 'Environment Check' ) {
 					steps {
-						echo "Haskell Prime."
+						echo "Haskell: Prime."
 						sh 'env'
 					}
 				}
