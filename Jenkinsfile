@@ -16,10 +16,10 @@ pipeline {
 
 	stages {
 		stage( 'Check lockable resources, and run if available.' ) {
+			options {
+				lock( 'haskell-docker-container' ) 
+			}			
 			stages {
-				options {
-					lock( 'haskell-docker-container' ) 
-				}
 				stage( 'Environment Check' ) {
 					steps {
 						echo "Haskell Prime."
