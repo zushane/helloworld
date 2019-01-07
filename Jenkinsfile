@@ -17,9 +17,9 @@ pipeline {
 	stages {
 		stage( 'Parent' ) {
 			stages {
-				// options {
-				// 	lock( 'haskell-docker-container' ) {
-				// }
+				options {
+					lock( 'haskell-docker-container' ) {
+				}
 				stage( 'Environment Check' ) {
 					steps {
 						echo "Haskell Prime."
