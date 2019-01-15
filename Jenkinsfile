@@ -15,12 +15,11 @@ pipeline {
 			steps {
 				sh 'cat /etc/issue'
 				sh 'env'
-				sh 'cpanm Module::Build'
 			}
 		}
 		stage( 'Build' ) {
 			steps {
-				slackSend channel: "#test", color: "#ACF0FD", message: "🛠 Build Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
+//				slackSend channel: "#test", color: "#ACF0FD", message: "🛠 Build Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
 				echo 'Building perl HelloWorld...'
 				sh '/usr/bin/perl Build.PL'
 				sh './Build'
@@ -28,7 +27,7 @@ pipeline {
 		}
 		stage( 'Test' ) {
 			steps {
-				slackSend channel: "#test", color: "#ACF0FD", message: "📝 Testing Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
+//				slackSend channel: "#test", color: "#ACF0FD", message: "📝 Testing Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
 				echo 'Testing perl HelloWorld...'
 				sh './Build test'
 			}
