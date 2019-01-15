@@ -14,6 +14,7 @@ pipeline {
 			steps {
 				sh 'cat /etc/issue'
 				sh 'env'
+				sh 'cpanm Module::Build'
 			}
 		}
 		stage( 'Build' ) {
@@ -41,12 +42,12 @@ pipeline {
 		success {
 			echo 'SUCCESS.'
 			mail to: 'sd@zu.com', subject: "😀 SUCCESS: ${currentBuild.fullDisplayName}", body: "Hello World successfully passed its tests.\n"
-			slackSend channel: "#test", color: "good", message: "😀 SUCCESS: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>" 
+//			slackSend channel: "#test", color: "good", message: "😀 SUCCESS: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>" 
 		}
 		failure {
 			echo 'FAILURE.'
 			mail to: 'sd@zu.com', subject: "💣 FAILURE: ${currentBuild.fullDisplayName}", body: "Hello World FAILED its tests.\n"
-			slackSend channel: "#test", color: "danger", message: "💣 FAILURE: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
+//			slackSend channel: "#test", color: "danger", message: "💣 FAILURE: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
 		}
 	}
 	
