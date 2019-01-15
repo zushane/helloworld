@@ -13,6 +13,7 @@ pipeline {
 		stage( 'Docker' ) {
 			steps {
 				sh 'cat /etc/issue'
+				sh 'locate -i build.pm'
 			}
 		}
 		stage( 'Build' ) {
