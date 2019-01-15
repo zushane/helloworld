@@ -13,6 +13,7 @@ pipeline {
 		stage( 'Docker' ) {
 			steps {
 				sh 'cat /etc/issue'
+				sh 'env'
 				sh 'locate -i build.pm'
 			}
 		}
