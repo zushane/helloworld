@@ -7,14 +7,13 @@
 
 
 pipeline {
-	agent { docker 'perl' }
+	agent { docker 'perl:latest' }
 
 	stages {
 		stage( 'Docker' ) {
 			steps {
 				sh 'cat /etc/issue'
 				sh 'env'
-				sh 'find / -iname build.pm'
 			}
 		}
 		stage( 'Build' ) {
