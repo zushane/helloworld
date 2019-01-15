@@ -14,7 +14,7 @@ pipeline {
 			steps {
 				sh 'cat /etc/issue'
 				sh 'env'
-				sh 'locate -i build.pm'
+				sh 'find / -iname build.pm'
 			}
 		}
 		stage( 'Build' ) {
