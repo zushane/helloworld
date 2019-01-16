@@ -16,6 +16,11 @@ sub what {
     return "What even IS this world?";
 }
 
+sub synonym {
+	my @array = ( "earth", "globe", "planet", "all of creation" );
+	return $array[rand @array];
+}
+
 sub repeat {
    return 1;
 }
