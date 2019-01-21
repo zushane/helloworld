@@ -1,19 +1,15 @@
 #!groovy
 
 pipeline {
-	
 	agent {
 		docker 'haskell'
 	}
-
 	triggers {
-	  cron(env.BRANCH_NAME == 'haskell' ? '16 11 * * *' : '')
+	  	cron(env.BRANCH_NAME == 'haskell' ? '16 11 * * *' : '')
 	}
-
 	environment {
 		TIMER_TRIGGERED="false"
 	}
-
 	stages {
 		stage( 'Check lockable resources, and run if available.' ) {
 			options {
@@ -43,7 +39,6 @@ pipeline {
 						sh '/opt/ghc/bin/ghc  --make -O2 helloworld.hs -o helloworld'
 					}
 				}
-		
 				stage( 'Test' ) {
 					steps {
 						slackSend channel: "#test", color: "#ACF0FD", message: "📝 Testing Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
@@ -51,7 +46,6 @@ pipeline {
 						sh './helloworld'
 					}
 				}
-
 				stage( 'Delays' ) {
 					parallel {
 						stage( 'Randomness' ) {
