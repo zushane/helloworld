@@ -19,7 +19,8 @@ pipeline {
                 }
             }
             steps {
-                sh 'php-cs-fixer ./htdocs/index.html --dry-run'
+                // sh 'php-cs-fixer ./htdocs/index.html --dry-run'
+                echo "$PATH"
             }
         }
     }
