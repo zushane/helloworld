@@ -2,9 +2,9 @@
 
 pipeline {
     agent none
-    environment {
-        PATH = "$PATH:/usr/sbin:/sbin"
-    }
+    // environment {
+    //     PATH = "$PATH:/usr/sbin:/sbin"
+    // }
     stages {
         stage( 'SCM' ) {
             steps {
