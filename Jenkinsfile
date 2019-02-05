@@ -11,7 +11,7 @@ pipeline {
                 echo "SCM checkout complete."
             }
         }
-        stage( 'Fix PHP code style.' )
+        stage( 'Fix PHP code style.' ) {
             agent {
                 docker {
                     image 'herloct/php-cs-fixer'
@@ -21,5 +21,6 @@ pipeline {
             steps {
                 sh 'php-cs-fixer ./htdocs/index.html --dry-run'
             }
+        }
     }
 }
