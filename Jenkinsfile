@@ -15,12 +15,12 @@ pipeline {
             agent {
                 docker {
                     image 'herloct/php-cs-fixer'
-                    args '--user "$(id -u)":"$(id -g)" --volume "$(pwd)":/project'
+                    args '--user "$(id -u)":"$(id -g)"'
                 }
             }
             steps {
                 // sh 'php-cs-fixer ./htdocs/index.html --dry-run'
-                echo "$PATH"
+                sh 'pwd'
             }
         }
     }
