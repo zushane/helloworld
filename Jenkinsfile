@@ -25,7 +25,7 @@ pipeline {
             steps {
                 // sh 'php-cs-fixer ./htdocs/index.html --dry-run'
                 echo "Testing image herloct/php-cs-fixer"
-                sh 'env'
+                sh 'ls'
             }
         }
     }
