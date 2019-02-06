@@ -15,7 +15,7 @@ pipeline {
             agent {
                 docker {
                     image 'herloct/php-cs-fixer'
-                    args '--user "$(id -u)":"$(id -g)"'
+//                    args '--user "$(id -u)":"$(id -g)"'
                 }
             }
             steps {
