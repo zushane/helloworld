@@ -11,16 +11,18 @@ pipeline {
                 echo "SCM checkout complete."
             }
         }
-        stage( 'Fix PHP code style.' ) {
+        stage( 'Test Docker Image' ) {
             agent {
-                docker {
-                    image 'herloct/php-cs-fixer'
-//                    args '--user "$(id -u)":"$(id -g)"'
-                }
+                docker 'herloct/php-cs-fixer'
+                // docker {
+                //     image 'herloct/php-cs-fixer'
+                //     args '--user "$(id -u)":"$(id -g)"'
+                // }
             }
             steps {
                 // sh 'php-cs-fixer ./htdocs/index.html --dry-run'
-                sh 'pwd'
+                echo "Testing image herloct/php-cs-fixer"
+                sh 'env'
             }
         }
     }
