@@ -2,7 +2,10 @@
 
 pipeline {
     agent {
-        docker 'herloct/php-cs-fixer'
+        docker {
+            image 'herloct/php-cs-fixer'
+            reuseNode true
+        }
     }
 //    agent none
     // environment {
