@@ -31,6 +31,8 @@ pipeline {
                 // sh 'php-cs-fixer ./htdocs/index.html --dry-run'
                 echo "Testing image herloct/php-cs-fixer"
                 sh 'ls -la'
+                sh 'pwd'
+                sh 'ls -la /'
             }
         }
     }
