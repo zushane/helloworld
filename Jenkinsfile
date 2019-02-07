@@ -1,14 +1,7 @@
 #!groovy
 
 pipeline {
-    agent {
-        docker {
-            image 'herloct/php-cs-fixer'
-            args '--entrypoint="" --volume=${PWD}'
-            reuseNode true
-        }
-    }
-//    agent none
+    agent none
     // environment {
     //     PATH = "$PATH:/usr/sbin:/sbin"
     // }
@@ -27,6 +20,13 @@ pipeline {
             //     //     args '--user "$(id -u)":"$(id -g)"'
             //     // }
             // }
+            agent {
+                docker {
+                    image 'herloct/php-cs-fixer'
+                    args '--entrypoint="" --volume=${PWD}'
+                    reuseNode true
+                }
+            }
             steps {
                 // sh 'php-cs-fixer ./htdocs/index.html --dry-run'
                 echo "Testing image herloct/php-cs-fixer"
