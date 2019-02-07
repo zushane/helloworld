@@ -4,7 +4,7 @@ pipeline {
     agent {
         docker {
             image 'herloct/php-cs-fixer'
-            args "--entrypoint='' --user $(id-u):$(id -g)"
+            args "--entrypoint='' --user \$(id-u):\$(id -g)"
             reuseNode true
         }
     }
