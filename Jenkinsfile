@@ -1,7 +1,7 @@
 #!groovy
 
 pipeline {
-    agent none
+    agent any
     // environment {
     //     PATH = "$PATH:/usr/sbin:/sbin"
     // }
