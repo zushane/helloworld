@@ -4,7 +4,7 @@ pipeline {
     agent {
         docker {
             image 'herloct/php-cs-fixer'
-            args "--entrypoint='' "
+            args "--entrypoint='' --volume=${PWD}"
             reuseNode true
         }
     }
@@ -30,7 +30,7 @@ pipeline {
             steps {
                 // sh 'php-cs-fixer ./htdocs/index.html --dry-run'
                 echo "Testing image herloct/php-cs-fixer"
-                sh 'ls'
+                sh 'ls -la'
             }
         }
     }
