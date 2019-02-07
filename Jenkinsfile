@@ -4,7 +4,7 @@ pipeline {
     agent {
         docker {
             image 'herloct/php-cs-fixer'
-            args "--entrypoint='' --user `id-u`:`id -g`"
+            args "--entrypoint='' "
             reuseNode true
         }
     }
@@ -15,6 +15,7 @@ pipeline {
     stages {
         stage( 'SCM' ) {
             steps {
+                sh 'env'
                 echo "SCM checkout complete."
             }
         }
