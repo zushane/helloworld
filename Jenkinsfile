@@ -3,7 +3,6 @@
 pipeline {
     agent any
     // environment {
-    //     PATH = "$PATH:/usr/sbin:/sbin"
     // }
     stages {
         stage( 'SCM' ) {
@@ -23,7 +22,8 @@ pipeline {
             agent {
                 docker {
                     image 'herloct/php-cs-fixer'
-                    args '--entrypoint="" --volume=/Users/shaned/code/helloworld:/project'
+//                    args '--entrypoint="" --volume=/Users/shaned/code/helloworld:/project'
+                    args '--entrypoint="" --volume=$WORKSPACE:/project'
                     reuseNode true
                 }
             }
