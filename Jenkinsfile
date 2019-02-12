@@ -33,6 +33,7 @@ pipeline {
                 sh 'ls -la'
                 sh 'pwd'
                 sh 'ls -la /'
+                sh 'ls -la /project'
             }
         }
     }
