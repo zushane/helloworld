@@ -29,10 +29,6 @@ pipeline {
             }
             steps {
                 echo "Testing image herloct/php-cs-fixer"
-                sh 'ls -la'
-                sh 'pwd'
-                sh 'ls -la /'
-                sh 'ls -la /project'
                 sh 'php-cs-fixer fix /project/htdocs/ --dry-run'
             }
         }
