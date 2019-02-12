@@ -33,7 +33,7 @@ pipeline {
                 sh 'pwd'
                 sh 'ls -la /'
                 sh 'ls -la /project'
-                sh 'php-cs-fixer /project/htdocs/ --dry-run'
+                sh 'php-cs-fixer fix /project/htdocs/ --dry-run'
             }
         }
     }
