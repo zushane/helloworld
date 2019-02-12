@@ -29,7 +29,7 @@ pipeline {
             }
             steps {
                 echo "Testing image herloct/php-cs-fixer"
-                sh 'php-cs-fixer fix /project/htdocs/ --dry-run'
+                sh 'php-cs-fixer fix /project/htdocs/'
             }
         }
     }
