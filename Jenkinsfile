@@ -23,7 +23,7 @@ pipeline {
             agent {
                 docker {
                     image 'herloct/php-cs-fixer'
-                    args '--entrypoint="" --volume=${PWD}'
+                    args '--entrypoint="" --volume=$PWD:/project'
                     reuseNode true
                 }
             }
