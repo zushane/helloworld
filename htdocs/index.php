@@ -20,6 +20,6 @@ ob_end_clean();
 REVISION: <?=$revision?>
 SERVER:   <?=$server?>
     </pre>
-    <h2>2017 Update!</h2>
+    <h2>2019 Update!</h2>
   </body>
 </html>
