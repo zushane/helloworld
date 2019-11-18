@@ -15,14 +15,14 @@ pipeline {
 			steps {
 				sh 'cat /etc/issue'
 				sh 'env'
-				sh 'sudo perl -MCPAN -e install Module::Build'
+				sh '/usr/local/bin/cpanm Module::Build Test::More'
 			}
 		}
 		stage( 'Build' ) {
 			steps {
 //				slackSend channel: "#test", color: "#ACF0FD", message: "🛠 Build Started: <${env.BUILD_URL}|${currentBuild.fullDisplayName}>"
 				echo 'Building perl HelloWorld...'
-				sh '/usr/bin/perl Build.PL'
+				sh '/usr/local/bin/perl Build.PL'
 				sh './Build'
 			}
 		}
