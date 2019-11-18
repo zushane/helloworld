@@ -15,6 +15,7 @@ pipeline {
 			steps {
 				sh 'cat /etc/issue'
 				sh 'env'
+				sh 'mkdir /.cpanm'
 				sh '/usr/local/bin/cpanm Module::Build Test::More'
 			}
 		}
