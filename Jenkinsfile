@@ -15,6 +15,7 @@ pipeline {
 			steps {
 				sh 'cat /etc/issue'
 				sh 'env'
+				sh 'perl -MCPAN -e install Module::Build'
 			}
 		}
 		stage( 'Build' ) {
