@@ -7,7 +7,7 @@
 
 
 pipeline {
-	agent { docker 'perl:5.30.0' }
+	agent { dockerfile true }
 //	agent { docker 'centos:7' }
 
 	stages {
@@ -15,8 +15,6 @@ pipeline {
 			steps {
 				sh 'cat /etc/issue'
 				sh 'env'
-				sh 'mkdir /.cpanm'
-				sh '/usr/local/bin/cpanm Module::Build Test::More'
 			}
 		}
 		stage( 'Build' ) {
