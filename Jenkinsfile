@@ -7,8 +7,9 @@
 
 
 pipeline {
-	agent { dockerfile true }
+//	agent { dockerfile true }
 //	agent { docker 'centos:7' }
+	agent { docker 'zushane/perl:latest' }
 
 	stages {
 		stage( 'Docker' ) {
