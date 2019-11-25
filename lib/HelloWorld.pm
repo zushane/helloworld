@@ -25,6 +25,10 @@ sub repeat {
    return 1;
 }
 
+sub untested {
+    return 1;
+}
+
 sub argumentTest {
     my ($booleanArg) = @_;
 
