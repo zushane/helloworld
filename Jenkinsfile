@@ -35,7 +35,7 @@ pipeline {
 		}
 		stage( 'Pizza Party' ) {
 			steps {
-				echo "Ham & Pineapple, please!"
+				echo "🍕 Ham & Pineapple, please!"
 			}
 		}
 	}

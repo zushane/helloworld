@@ -1,4 +1,4 @@
-FROM        perl:5.30.0
+FROM        perl:5.32.1
 
 LABEL       maintainer="shane doucette <sd@zu.com>"
 
